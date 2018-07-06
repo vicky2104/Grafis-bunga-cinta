@@ -23,7 +23,7 @@ public class GLRenderer implements GLEventListener {
 
         // Enable VSync
         gl.setSwapInterval(1);
-
+ttttttttttt
         // Setup the drawing area and shading mode
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         gl.glShadeModel(GL.GL_SMOOTH); // try setting this to GL_FLAT and see what happens.
