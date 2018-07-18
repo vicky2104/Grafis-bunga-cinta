@@ -40,31 +40,9 @@ public class TA_Grafis extends JFrame implements KeyListener, GLEventListener, M
         Frame frame = new Frame("");
         GLCanvas canvas = new GLCanvas();
         canvas.addGLEventListener(new TA_Grafis());
+        canvas.addKeyListener(new TA_Grafis());
 
-        KeyListener a = new KeyListener() {
-
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-// key pressed
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-
-                    if (bolehgerakpot) {
-                        bolehgerakpot = false;
-                    } else {
-                        bolehgerakpot = true;
-                    }
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        };
-        frame.addKeyListener(a);
+        frame.addKeyListener(new TA_Grafis());
         frame.add(canvas);
         frame.setSize(640, 480);
 
@@ -142,12 +120,20 @@ public class TA_Grafis extends JFrame implements KeyListener, GLEventListener, M
     }
     
 
-    static double lebar = 0.25;
-    static double tinggi = 4;
-    static double transy = 0;
-    static double pindahpot = 0;
-    static double gerakpot = 0;
-    static boolean bolehgerakpot = false;
+        static double bunga = 0;
+        static double bunga1 = 0;
+        static double lebar = 0;
+        static double tinggi = 0;
+        static double transy = 0;
+        static double pindahpot = 0;
+        static double gerakpot = 0;
+        static boolean bolehgerakpot = false;
+
+        static float atas = 0.0f;
+        static float bawah = 0.0f;
+        static float kanan = 0.0f;
+        static float kiri = 0.0f;
+        static float tambah = 5f;
 
     public void display(GLAutoDrawable drawable) {
 
@@ -170,10 +156,14 @@ public class TA_Grafis extends JFrame implements KeyListener, GLEventListener, M
         gl.glRotatef(view_rotx, 1.0f, 0.0f, 0.0f);
         gl.glRotatef(view_roty, 0.0f, 1.0f, 0.0f);
         gl.glTranslatef(-0.5f, -0.5f, 1.5f);
-        //Objek.Kubus(gl);
+    
         gl.glRotated(50, 0, -1, 0);
         gl.glTranslated(0, 0, -3);
-        // Objek Tabung
+        
+        gl.glRotated(atas, 1, 0, 0);
+        gl.glRotated(bawah, -1, 0, 0);
+        gl.glRotated(kiri, 0, 0, -1);
+        gl.glRotated(kanan, 0, 0, 1);
 
         gl.glPushMatrix();
         Objek.pot(gl);
@@ -193,8 +183,27 @@ public class TA_Grafis extends JFrame implements KeyListener, GLEventListener, M
         gl.glTranslated(0, 4, -0.5);
         Objek.bunga(gl);
         gl.glPopMatrix();
+        
+        gl.glLoadIdentity();
 
-        gl.glFlush();
+        if (lebar < 0.25) {
+            lebar += 0.0005;
+        }
+        if (tinggi <= 4) {
+            tinggi += 0.005;
+
+        } else {
+            if (bunga <= 1.5) {
+                bunga += 0.003;
+            }
+            if (bunga1 <= 0.5) {
+                bunga1 += 0.001;
+
+            }
+
+            gl.glFlush();
+        }
+
     }
 
     public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
@@ -231,20 +240,23 @@ public class TA_Grafis extends JFrame implements KeyListener, GLEventListener, M
 
     public void mouseMoved(MouseEvent e) {
     }
-    private JButton Btn_belahpot;
-
-    //  void Key_Pressed(int keyCode) {
-    //if(keyCode == 32){
-    //  System.out.println("presed"+keyCode);
-    //x=x+2;
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(e.getKeyCode());
+        if (e.getKeyCode() == 87) {
+            atas += tambah;
+        } else if (e.getKeyCode() == 83) {
+            bawah += tambah;
+        } else if (e.getKeyCode() == 65) {
+            kiri += tambah;
+        } else if (e.getKeyCode() == 68) {
+            kanan += tambah;
+        }
     }
 
     @Override
