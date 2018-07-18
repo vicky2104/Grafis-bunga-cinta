@@ -15,6 +15,8 @@ import javax.media.opengl.glu.GLUquadric;
 import static org.yourorghere.TA_Grafis.lebar;
 import static org.yourorghere.TA_Grafis.tinggi;
 import static org.yourorghere.TA_Grafis.pindahpot;
+import static org.yourorghere.TA_Grafis.bunga;
+import static org.yourorghere.TA_Grafis.bunga1;
 
 /**
  *
