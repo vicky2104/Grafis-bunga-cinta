@@ -69,5 +69,33 @@ public class Objek {
         glu.gluCylinder(q, BODY_RADIUS, BODY_RADIUS, BODY_LENGTH, SLICES, STACKS);
 
     }
+    public static void bunga(GL gl) {
+        
+        gl.glColor3d(1, 1, 0);
+        double BODY_RADIUS = 0.025;
 
+        int SLICES = 15;
+        int STACKS = 5;
+        
+        GLU glu = new GLU();
+   
+        GLUquadric q = glu.gluNewQuadric();
+        TA_Grafis.sun.enable();
+        TA_Grafis.sun.bind();
+        gl.glBegin(GL.GL_QUADS);
+        gl.glTexCoord2d(0,0);
+        gl.glVertex3d(-bunga, bunga, 0);
+        gl.glTexCoord2d(1,0);
+        gl.glVertex3d(bunga,bunga, 0);
+        gl.glTexCoord2d(1,1);
+        gl.glVertex3d(bunga, -bunga, 0);
+        gl.glTexCoord2d(0,1);
+        gl.glVertex3d(-bunga, -bunga, 0);
+        gl.glEnd();
+
+        TA_Grafis.sun.disable();
+        gl.glColor3d(1, 0, 0);
+        
+        glu.gluSphere(q,bunga1, (int) 15, STACKS);
+    }
 }
