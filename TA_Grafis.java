@@ -182,11 +182,16 @@ public class TA_Grafis extends JFrame implements KeyListener, GLEventListener, M
         gl.glTranslated(0, 0, 1);
         gl.glPopMatrix();
         Objek.biji(gl); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
-        
         gl.glPopMatrix();//Objek Bola
+        
         gl.glPushMatrix();
         Objek.batang(gl); // Pada fungsi yang sudah dibuat pada pembahasan sebelumnya
+        gl.glPopMatrix();
         
+        gl.glPushMatrix();
+        gl.glRotated(90, 1, 0, 0);
+        gl.glTranslated(0, 4, -0.5);
+        Objek.bunga(gl);
         gl.glPopMatrix();
 
         gl.glFlush();
