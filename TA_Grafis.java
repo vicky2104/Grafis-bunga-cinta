@@ -68,9 +68,14 @@ public class TA_Grafis extends JFrame implements KeyListener, GLEventListener, M
     private int oldMouseX;
     private int oldMouseY;
     float geserx;
-
+    static double[][] randomakar = new double[150][4];
 
     public void init(GLAutoDrawable drawable) {
+         for (int i = 0; i < randomakar.length; i++) {
+            for (int j = 0; j < randomakar[0].length; j++) {
+                randomakar[i][j] = Math.random();
+            }
+        }
 
         GL gl = drawable.getGL();
         gl.glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
