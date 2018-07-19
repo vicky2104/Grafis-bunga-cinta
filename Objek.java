@@ -29,6 +29,34 @@ public class Objek {
     static double cakar = 0;
 
     static void biji(GL gl) {
+         for (int i = 0; i < 150; i++) {
+            gl.glPushMatrix();
+            gl.glRotated(TA_Grafis.randomakar[i][0] * 70, 1, 1, 1);
+            gl.glRotated(TA_Grafis.randomakar[i][1] * -70, 1, 1, 1);
+            gl.glRotated(TA_Grafis.randomakar[i][2] * 360, 0, 0, 1);
+              gl.glBegin(GL.GL_LINES);
+            double a = TA_Grafis.randomakar[i][3];
+            if (takar <= -1) {
+                takar = -1;
+                bakar = -1;
+                cakar = cakar + 0.002;
+                if (cakar >= 0.3) {
+                    cakar = 0.3;
+                }
+            }
+            
+            //akar
+            
+            gl.glColor3d(0.566, 0.324, 0);
+            gl.glVertex3d(0, 0, 0);
+            gl.glVertex3d(a * takar, 0, a * takar);
+            gl.glVertex3d(a * bakar, 0, a * bakar);
+            gl.glVertex3d(a * cakar, 0, a * -cakar * 6.67);
+            gl.glEnd();
+            takar = takar - 0.000005;
+            gl.glPopMatrix();
+        }
+        
 
         gl.glColor3d(0.566, 0.324, 0);
         float BODY_RADIUS = 0.5f;
